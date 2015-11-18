@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/index', 'IndexController@index');
+Route::get('contact', 'IndexController@contact');
+
+Route::get('cv', 'CvController@index');
+
+Route::get('home', 'HomeController@index');
+
+Route::controllers(array(
+		'auth' => 'Auth\AuthController',
+		'password' => 'Auth\PasswordController'
+	));
