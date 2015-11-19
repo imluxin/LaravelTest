@@ -26,3 +26,8 @@ Route::controllers(array(
 		'auth' => 'Auth\AuthController',
 		'password' => 'Auth\PasswordController'
 	));
+
+/**
+ * Laravel study controllers
+ */
+Route::get('test', 'TestController@index');
