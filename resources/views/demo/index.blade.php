@@ -1,4 +1,4 @@
-@extends('test')
+@extends('layoutDemo')
 
 @section('content')
     <h1>这是一个测试页</h1>

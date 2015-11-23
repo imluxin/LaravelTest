@@ -30,4 +30,4 @@ Route::controllers(array(
 /**
  * Laravel study controllers
  */
-Route::get('test', 'TestController@index');
+Route::get('demo', 'DemoController@index');

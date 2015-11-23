@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class TestController extends Controller
+class DemoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class TestController extends Controller
             'gender' => 'Male',
             'interests' => array('Football', 'Video', 'Music')
         );
-        return view('test.index', $data);
+        return view('demo.index', $data);
     }
 
     /**
