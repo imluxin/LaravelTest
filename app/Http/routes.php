@@ -31,3 +31,5 @@ Route::controllers(array(
  * Laravel study controllers
  */
 Route::get('demo', 'DemoController@index');
+
+Route::get('articles', 'ArticlesController@index');
