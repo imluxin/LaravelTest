@@ -13,8 +13,18 @@ class ArticlesController extends Controller
     public function index()
     {
         $articles = Article::all();
-//        var_dump($articles);die();
-        return $articles;
+        $metaTitle = 'Articles';
+        return view('article.index', compact('articles', 'metaTitle'));
+    }
+
+    public function show($id)
+    {
+        $article = Article::find($id);
+        if(is_null($article)) {
+            abort(404);
+        }
+        $metaTitle = $article->title;
+        return view('article.show', compact('article', 'metaTitle'));
     }
 
 }

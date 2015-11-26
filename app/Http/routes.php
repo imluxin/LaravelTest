@@ -27,9 +27,10 @@ Route::controllers(array(
 		'password' => 'Auth\PasswordController'
 	));
 
-/**
- * Laravel study controllers
- */
+
+// demo routes
 Route::get('demo', 'DemoController@index');
 
+// articles routes
 Route::get('articles', 'ArticlesController@index');
+Route::get('articles/{id}', 'ArticlesController@show');
