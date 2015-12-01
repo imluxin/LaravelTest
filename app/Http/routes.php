@@ -11,22 +11,26 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as' => 'home', function () {
     return view('welcome');
-});
+}]);
 
-Route::get('/index', 'IndexController@index');
+Route::get('index', 'IndexController@index');
 Route::get('contact', 'IndexController@contact');
 
 Route::get('cv', 'CvController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('home', function(){
+	return view('welcome');
+});
 
 Route::controllers(array(
 		'auth' => 'Auth\AuthController',
 		'password' => 'Auth\PasswordController'
 	));
 
+// resource route for RESTFull
+Route::resource('photo', 'PhotoController');
 
 // articles routes
 

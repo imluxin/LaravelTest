@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Model\Article;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Route;
 use Request;
 
 use App\Http\Requests;
@@ -11,8 +12,16 @@ use App\Http\Controllers\Controller;
 
 class ArticlesController extends Controller
 {
+
+    public function __construct() {
+//        $this->middleware('');
+        parent::__construct();
+    }
+
     public function index()
     {
+//        $action = Route::currentRouteAction();
+//        var_dump($action);die();
 //        abort(404);
 //        $articles = Article::all();
         $articles = Article::latest()->get();
@@ -42,7 +51,7 @@ class ArticlesController extends Controller
         $data['published_at'] = Carbon::now();
         $a = Article::create($data);
 //        var_dump($a);die();
-        return redirect('articles');
+        return redirect()->route('article::list');
     }
 
 }
