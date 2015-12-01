@@ -1,6 +1,6 @@
 ## Laravel PHP Framework Demo
 
-This is a demo project for studying Laravel.
+This is a demo project of Laravel.
 
 ## Database
 
