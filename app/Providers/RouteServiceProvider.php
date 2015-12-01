@@ -27,6 +27,9 @@ class RouteServiceProvider extends ServiceProvider
         // 全局限定id为数字
         $router->pattern('id', '[0-9]+');
 
+        // article 绑定 App\Article 模型
+        $this->model('article', 'App\Article');
+
         parent::boot($router);
     }
 
