@@ -13,6 +13,7 @@ class ArticlesController extends Controller
 {
     public function index()
     {
+//        abort(404);
 //        $articles = Article::all();
         $articles = Article::latest()->get();
         $metaTitle = 'Articles';
