@@ -32,7 +32,7 @@ Route::controllers(array(
 Route::get('demo', 'DemoController@index');
 
 // articles routes
-Route::get('articles', 'ArticlesController@index');
+Route::get('articles', 'ArticlesController@index')->name('article_home');
 Route::post('articles', 'ArticlesController@store');
-Route::get('articles/create', 'ArticlesController@create');
+Route::get('articles/create', ['as' => 'article_add', 'uses' => 'ArticlesController@create']);
 Route::get('articles/{id}', 'ArticlesController@show');

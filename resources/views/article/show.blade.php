@@ -8,6 +8,6 @@
 
     <hr>
     <back>
-        <a href="{{ url('/articles') }}">Go back</a>
+        <a href="{{ route('article_home') }}">Go back</a>
     </back>
 @stop
