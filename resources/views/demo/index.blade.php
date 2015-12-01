@@ -1,4 +1,4 @@
-@extends('layoutDemo')
+@extends('layout.demo')
 
 @section('content')
     <h1>这是一个测试页</h1>
@@ -18,4 +18,10 @@
             </ul>
         </div>
     @endif
+
+    <hr>
+
+    <div>
+        <a href="{{ route('demos') }}">Go to demo!</a>
+    </div>
 @stop

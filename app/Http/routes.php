@@ -28,11 +28,24 @@ Route::controllers(array(
 	));
 
 
+// articles routes
+
+Route::group(['as' => 'article::', 'prefix' => 'articles'], function(){
+	Route::get('/list', ['as' => 'list', 'uses' => 'ArticlesController@index']);
+	Route::get('/create', ['as' => 'create', 'uses' => 'ArticlesController@create']);
+	Route::post('/store', ['as' => 'store', 'uses' => 'ArticlesController@store']);
+	Route::get('/{article}', ['as' => 'show', 'uses' => 'ArticlesController@show']);
+});
+
+//Route::get('articles', 'ArticlesController@index')->name('article_home');
+//Route::post('articles', 'ArticlesController@store');
+//Route::get('articles/create', ['as' => 'article_add',
+//							   'uses' => 'ArticlesController@create']);
+//Route::get('articles/{article}', ['as' => 'article_view',
+//								  'uses' => 'ArticlesController@show']);
+
 // demo routes
 Route::get('demo', 'DemoController@index');
-
-// articles routes
-Route::get('articles', 'ArticlesController@index')->name('article_home');
-Route::post('articles', 'ArticlesController@store');
-Route::get('articles/create', ['as' => 'article_add', 'uses' => 'ArticlesController@create']);
-Route::get('articles/{id}', 'ArticlesController@show');
+Route::match(['get', 'post'], 'demos', ['as' => 'demos',
+										'uses' => 'DemoController@index']);
+Route::any('demo_all', 'DemoController@index');

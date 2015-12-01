@@ -28,7 +28,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->pattern('id', '[0-9]+');
 
         // article 绑定 App\Article 模型
-        $this->model('article', 'App\Article');
+        $this->model('article', 'App\Http\Model\Article');
 
         parent::boot($router);
     }

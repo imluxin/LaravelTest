@@ -1,4 +1,4 @@
-@extends('layoutDemo')
+@extends('layout.demo')
 
 @section('content')
     <h1>{{ $article->title }}</h1>
@@ -8,6 +8,6 @@
 
     <hr>
     <back>
-        <a href="{{ route('article_home') }}">Go back</a>
+        <a href="{{ route('article::list') }}">Go back</a>
     </back>
 @stop

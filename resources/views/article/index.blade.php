@@ -1,11 +1,11 @@
-@extends('layoutDemo')
+@extends('layout.demo')
 
 @section('content')
 <h1>Articles</h1>
-<h3><a href="{{ route('article_add') }}">新增</a></h3>
+<h3 class="text-right"><a class="btn btn-success" href="{{ route('article::create') }}">新增</a></h3>
 @foreach($articles as $article)
     <h2>
-        <a href="{{ action('ArticlesController@show', array('id' => $article->id), true) }}">
+        <a href="{{ route('article::show', ['id' => $article->id]) }}">
             {{ $article->title }}
         </a>
     </h2>

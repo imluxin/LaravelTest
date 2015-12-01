@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\Http\Model\Article;
 use Carbon\Carbon;
 use Request;
 
@@ -19,9 +19,9 @@ class ArticlesController extends Controller
         return view('article.index', compact('articles', 'metaTitle'));
     }
 
-    public function show($id)
+    public function show(Article $article)
     {
-        $article = Article::find($id);
+//        $article = Article::find($id);
         if(is_null($article)) {
             abort(404);
         }
