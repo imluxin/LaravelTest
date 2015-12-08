@@ -16,6 +16,8 @@ class DemoController extends Controller
      */
     public function index()
     {
+        $url = route('demo', ['id'=>'123', 'haha' => 'hehe']);
+        var_dump($url);
         $data = array(
             'metaTitle' => 'Test Page',
             'name' => 'Lux',

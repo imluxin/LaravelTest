@@ -49,7 +49,7 @@ Route::group(['as' => 'article::', 'prefix' => 'articles'], function(){
 //								  'uses' => 'ArticlesController@show']);
 
 // demo routes
-Route::get('demo', 'DemoController@index');
+Route::get('demo/{id}', ['as' => 'demo', 'uses' =>'DemoController@index']);
 Route::match(['get', 'post'], 'demos', ['as' => 'demos',
 										'uses' => 'DemoController@index']);
 Route::any('demo_all', 'DemoController@index');
