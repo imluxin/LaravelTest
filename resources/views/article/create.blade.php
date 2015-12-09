@@ -15,8 +15,22 @@
             {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
+            {!! Form::label('published_at', 'Publish on:') !!}
+            {!! Form::input('date', 'published_at', date('Y-m-d'), ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
             {!! Form::submit('Add article', ['class' => 'btn btn-primary']) !!}
             <a class="btn btn-danger" href="{{ route('article::list') }}">Cancel</a>
         </div>
     {!! Form::close() !!}
+
+    @if($errors->any())
+        <ul class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                 <li>
+                     {{ $error }}
+                 </li>
+            @endforeach
+        </ul>
+    @endif
 @stop

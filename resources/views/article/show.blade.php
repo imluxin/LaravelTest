@@ -2,6 +2,9 @@
 
 @section('content')
     <h1>{{ $article->title }}</h1>
+    <h4>
+        Published at：{{ $article->published_at }}
+    </h4>
     <article>
         {{ $article->body }}
     </article>

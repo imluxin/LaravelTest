@@ -35,6 +35,7 @@ Route::resource('photo', 'PhotoController');
 // articles routes
 
 Route::group(['as' => 'article::', 'prefix' => 'articles'], function(){
+	Route::get('/', ['as' => 'list_', 'uses' => 'ArticlesController@index']);
 	Route::get('/list', ['as' => 'list', 'uses' => 'ArticlesController@index']);
 	Route::get('/create', ['as' => 'create', 'uses' => 'ArticlesController@create']);
 	Route::post('/store', ['as' => 'store', 'uses' => 'ArticlesController@store']);
