@@ -40,7 +40,7 @@ class ArticlesController extends Controller
         if(is_null($article)) {
             abort(404);
         }
-        var_dump($article->published_at);
+//        var_dump($article->published_at);
         $metaTitle = $article->title;
         return view('article.show', compact('article', 'metaTitle'));
     }
