@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    // 指定表的名字
     protected $table = 'article';
 
+    // 指定可以插入数据的字段
     protected $fillable = ['title', 'body', 'expert', 'published_at'];
+
 
     protected $dates = ['published_at'];
 

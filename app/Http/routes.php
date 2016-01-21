@@ -14,6 +14,8 @@
 Route::get('/', ['as' => 'home', function () {
     return view('welcome');
 }]);
+Route::get('/welcome', 'WelcomeController@index');
+Route::get('/hello/{name}', 'WelcomeController@hello');
 
 Route::get('index', 'IndexController@index');
 Route::get('contact', 'IndexController@contact');
@@ -50,7 +52,7 @@ Route::group(['as' => 'article::', 'prefix' => 'articles'], function(){
 //								  'uses' => 'ArticlesController@show']);
 
 // demo routes
-Route::get('demo/{id}', ['as' => 'demo', 'uses' =>'DemoController@index']);
+Route::get('/demo/{id}', ['as' => 'demo', 'uses' =>'DemoController@index']);
 Route::match(['get', 'post'], 'demos', ['as' => 'demos',
 										'uses' => 'DemoController@index']);
-Route::any('demo_all', 'DemoController@index');
+Route::any('/demo', 'DemoController@index');

@@ -22,15 +22,25 @@ class ArticlesController extends Controller
 
     public function index()
     {
+        // 查看当前action
 //        $action = Route::currentRouteAction();
 //        var_dump($action);die();
+
+        // 抛出404错误
 //        abort(404);
-//        $articles = Article::all();
+
+        // 获取所有文章数据
+        $articles = Article::all();
+        var_dump($articles);die();
+
 //        $articles = Article::latest()->get();
+
+        // 按published_at倒序排列已到发布时间的数据
 //        $articles = Article::latest('published_at')->where('published_at', '<=', Carbon::now())->get();
         $articles = Article::latest('published_at')->published()->get();
-        $metaTitle = 'Articles';
 
+
+        $metaTitle = 'Articles';
         return view('article.index', compact('articles', 'metaTitle'));
     }
 
@@ -62,7 +72,8 @@ class ArticlesController extends Controller
         // user make:request to create a Request validate class
 
         // if use controller validate, we should define rules in controller
-        $this->validate($request, ['title' => 'required', 'body' => 'required']);
+        $this->validate($request, ['title' => 'required',
+                                   'body' => 'required']);
 
 //        $data = Request::all(); // use nothing validation
         $data = $request->all(); // if use Request validation
