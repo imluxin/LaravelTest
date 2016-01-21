@@ -2,10 +2,10 @@
 
 @section('content')
     <h1>创建一篇文章</h1>
-
     <hr>
 
-    {!! Form::open(['url' => route('article::store')]) !!}
+    {!! Form::open(['url' => route('article::store'), 'method' => 'post']) !!}
+
         <div class="form-group">
             {!! Form::label('title', 'Title:') !!}
             {!! Form::text('title', null, ['class' => 'form-control']) !!}
@@ -22,8 +22,9 @@
             {!! Form::submit('Add article', ['class' => 'btn btn-primary']) !!}
             <a class="btn btn-danger" href="{{ route('article::list') }}">Cancel</a>
         </div>
-    {!! Form::close() !!}
 
+    {!! Form::close() !!}
+{{--{{ dump($errors) }}--}}
     @if($errors->any())
         <ul class="alert alert-danger">
             @foreach($errors->all() as $error)

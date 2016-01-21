@@ -136,7 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class,
+        Illuminate\Html\HtmlServiceProvider::class, // html 库依赖，用于表单生成等
 
         /*
          * Application Service Providers...
@@ -195,7 +195,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
-        'Html'      => Illuminate\Html\HtmlFacade::class, // add by lux
+        'Html'      => Illuminate\Html\HtmlFacade::class, // add by lux  // html 库依赖，用于表单生成等
     ],
 
 ];

@@ -9,8 +9,10 @@
             {{ $article->title }}
         </a>
     </h2>
+    <h4>{{ $article->published_at }}</h4>
     <article>
         {{ $article->body }}
+        <hr>
     </article>
 @endforeach
 @stop

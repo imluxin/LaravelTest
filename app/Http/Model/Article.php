@@ -13,7 +13,7 @@ class Article extends Model
     // 指定可以插入数据的字段
     protected $fillable = ['title', 'body', 'expert', 'published_at'];
 
-
+    // 设置published_at为Carbon类型
     protected $dates = ['published_at'];
 
     public function setPublishedAtAttribute($date)
@@ -22,6 +22,10 @@ class Article extends Model
 //        $this->attributes['published_at'] = Carbon::parse($date); // 格式化为0点时间
     }
 
+    /**
+     * 增加Sql过滤
+     * @param $query
+     */
     public function scopePublished($query)
     {
         $query->where('published_at', '<=', Carbon::now());
