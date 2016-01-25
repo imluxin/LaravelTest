@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Model\Article;
-use App\Http\Requests\CreateArticleRequest;
+use App\Http\Requests\ArticleRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 //use Request;
@@ -86,18 +86,18 @@ class ArticlesController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param ArticleRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-//    public function store(CreateArticleRequest $request) // validate use Form Request
-    public function store(Request $request) // validate use controller validate
+    public function store(ArticleRequest $request) // validate use Form Request
+//    public function store(Request $request) // validate use controller validate
     {
         // validation
         // user make:request to create a Request validate class
 
         // if use controller validate, we should define rules in controller
-        $this->validate($request, ['title' => 'required|5',
-                                   'body'  => 'required']);
+//        $this->validate($request, ['title' => 'required|5',
+//                                   'body'  => 'required']);
 
 //        $data = Request::all(); // use nothing validation
         $data = $request->all(); // if use Request validation
@@ -108,6 +108,30 @@ class ArticlesController extends Controller
         return redirect()->route('article::list');
         // or
 //        return redirect('articles');
+    }
+
+    /**
+     * 编辑文章
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $article = Article::findOrFail($id);
+        return view('article.edit', ['article' => $article]);
+    }
+
+    /**
+     * 更新文章
+     * @param $id
+     * @param ArticleRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update($id, ArticleRequest $request)
+    {
+        $article = Article::findOrFail($id);
+        $article->update($request->all());
+        return redirect()->route('article::list');
     }
 
 }

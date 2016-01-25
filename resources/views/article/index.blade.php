@@ -12,7 +12,10 @@
     <h4>{{ $article->published_at }}</h4>
     <article>
         {{ $article->body }}
-        <hr>
     </article>
+    <action>
+        <a href="{{ route('article::edit', ['id' => $article->id]) }}" class="btn btn-primary">Edit</a>
+    </action>
+    <hr>
 @endforeach
 @stop
