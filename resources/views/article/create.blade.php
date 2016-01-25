@@ -1,7 +1,7 @@
 @extends('layout.demo')
 
 @section('content')
-    <h1>创建一篇文章</h1>
+    <h1>新建文章</h1>
     <hr>
 
     {!! Form::open(['url' => route('article::store'), 'method' => 'post']) !!}
