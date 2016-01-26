@@ -54,6 +54,7 @@ class ArticlesController extends Controller
         if(is_null($article)) {
             abort(404);
         }
+        dd($article->user());
 //        dd($article->published_at->addDays(8));
 //        var_dump($article->published_at);
         $metaTitle = $article->title;
