@@ -54,11 +54,11 @@ class ArticlesController extends Controller
         if(is_null($article)) {
             abort(404);
         }
-        dd($article->user());
+        $user = $article->user()->first();
 //        dd($article->published_at->addDays(8));
 //        var_dump($article->published_at);
         $metaTitle = $article->title;
-        return view('article.show', compact('article', 'metaTitle'));
+        return view('article.show', compact('article', 'metaTitle', 'user'));
     }
 
     /**
@@ -133,6 +133,17 @@ class ArticlesController extends Controller
         $article = Article::findOrFail($id);
         $article->update($request->all());
         return redirect()->route('article::list');
+    }
+
+    public function delete($id)
+    {
+        Article::destroy($id);
+        return redirect()->route('article::list');
+    }
+
+    public function softDelete($id)
+    {
+
     }
 
 }

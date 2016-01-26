@@ -15,6 +15,7 @@
     </article>
     <action>
         <a href="{{ route('article::edit', ['id' => $article->id]) }}" class="btn btn-primary">Edit</a>
+        <a href="{{ route('article::delete', ['id' => $article->id]) }}" class="btn btn-danger">Delete</a>
     </action>
     <hr>
 @endforeach

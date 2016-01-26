@@ -46,6 +46,7 @@ Route::group(['as' => 'article::', 'prefix' => 'articles'], function () {
     Route::patch('/{id}', ['as' => 'update', 'uses' => 'ArticlesController@update']);
     Route::put('/{id}', ['as' => 'update_', 'uses' => 'ArticlesController@update']);
     Route::get('/view/{id}', ['as' => 'view', 'uses' => 'ArticlesController@view']);
+    Route::get('/{id}/delete', ['as' => 'delete', 'uses' => 'ArticlesController@delete']);
 });
 
 //Route::get('articles', 'ArticlesController@index')->name('article_home');

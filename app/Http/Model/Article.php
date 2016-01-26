@@ -4,17 +4,26 @@ namespace App\Http\Model;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
+    // 启用软删除
+    use SoftDeletes;
+
     // 指定表的名字
     protected $table = 'article';
 
-    // 指定可以插入数据的字段
+    // 指定可以插入数据的字段 - 白名单
     protected $fillable = ['title', 'body', 'expert', 'published_at', 'user_id'];
+    // 指定不可以插入数据的字段 - 黑名单
+//    protected $guarded = [];
 
     // 设置published_at为Carbon类型
-    protected $dates = ['published_at'];
+    protected $dates = ['published_at', 'deleted_at'];
+
+    // 取消created_at updated_at两个字段
+//    public $timestamps = false;
 
     public function setPublishedAtAttribute($date)
     {
