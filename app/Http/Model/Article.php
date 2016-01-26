@@ -11,7 +11,7 @@ class Article extends Model
     protected $table = 'article';
 
     // 指定可以插入数据的字段
-    protected $fillable = ['title', 'body', 'expert', 'published_at'];
+    protected $fillable = ['title', 'body', 'expert', 'published_at', 'user_id'];
 
     // 设置published_at为Carbon类型
     protected $dates = ['published_at'];
@@ -29,5 +29,14 @@ class Article extends Model
     public function scopePublished($query)
     {
         $query->where('published_at', '<=', Carbon::now());
+    }
+
+    /**
+     * user 与 article 建立一对多关系
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }
