@@ -3,7 +3,7 @@
 @section('content')
     <h1>{{ $article->title }}</h1>
     <h4>
-        Author: {{ $user->username }} <br>
+        Author: {{ $article->user->username }} <br>
         Published at：{{ $article->published_at }}
     </h4>
     <article>

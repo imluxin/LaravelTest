@@ -5,11 +5,14 @@
 <h3 class="text-right"><a class="btn btn-success" href="{{ route('article::create') }}">新增</a></h3>
 @foreach($articles as $article)
     <h2>
-        <a href="{{ route('article::show', ['id' => $article->id]) }}">
+        <a href="{{ route('article::view', ['id' => $article->id]) }}">
             {{ $article->title }}
         </a>
     </h2>
-    <h4>{{ $article->published_at }}</h4>
+    <h4>
+        Author: {{ $article->user->username }} <br>
+        Time: {{ $article->published_at }}
+    </h4>
     <article>
         {{ $article->body }}
     </article>

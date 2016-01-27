@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Model\Article;
+use App\Model\Article;
 use App\Http\Requests\ArticleRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -43,9 +43,14 @@ class ArticlesController extends Controller
 
         // 直接return articles为 json字符串
 //        return $articles;
-
+//var_dump($articles);
         $metaTitle = 'Articles';
-        return view('article.index', compact('articles', 'metaTitle'));
+        $data = array('articles' => $articles, 'metaTitle' => $metaTitle); //compact('articles', 'metaTitle')
+//        foreach($articles as $a) {
+//            $b = $a->user->username;
+//            var_dump($b);die();
+//        }
+        return view('article.index')->with($data);
     }
 
     public function show(Article $article)
@@ -54,11 +59,12 @@ class ArticlesController extends Controller
         if(is_null($article)) {
             abort(404);
         }
-        $user = $article->user()->first();
+//        var_dump($article->user()->get());die();
+//        $user = $article->user()->first();
 //        dd($article->published_at->addDays(8));
 //        var_dump($article->published_at);
         $metaTitle = $article->title;
-        return view('article.show', compact('article', 'metaTitle', 'user'));
+        return view('article.show')->with(compact('article', 'metaTitle', 'user'));
     }
 
     /**
@@ -76,7 +82,7 @@ class ArticlesController extends Controller
 
         // 第二种方法， 等同于每一种
         $article = Article::findOrFail($id);
-
+//        var_dump($article);die();
         return view('article.view', array('article' => $article, 'metaTitle' => $article->title));
     }
 
@@ -139,11 +145,6 @@ class ArticlesController extends Controller
     {
         Article::destroy($id);
         return redirect()->route('article::list');
-    }
-
-    public function softDelete($id)
-    {
-
     }
 
 }

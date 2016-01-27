@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Model;
+namespace App\Model;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -32,7 +32,7 @@ class Article extends Model
     }
 
     /**
-     * 增加Sql过滤
+     * 查询作用域 - 增加Sql过滤
      * @param $query
      */
     public function scopePublished($query)
