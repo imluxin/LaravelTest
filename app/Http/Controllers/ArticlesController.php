@@ -39,7 +39,10 @@ class ArticlesController extends Controller
         // 按published_at倒序排列已到发布时间的数据
 //        $articles = Article::latest('published_at')->where('published_at', '<=', Carbon::now())->get();
 //        $articles = Article::orderBy('published_at', 'DESC')->get();
-        $articles = Article::latest('published_at')->published()->get();
+        $articles = Article::latest('published_at')
+            ->published()
+            ->with('user')
+            ->get();
 
         // 直接return articles为 json字符串
 //        return $articles;
@@ -50,7 +53,7 @@ class ArticlesController extends Controller
 //            $b = $a->user->username;
 //            var_dump($b);die();
 //        }
-        return view('article.index')->with($data);
+        return view('article.index', $data);//->with($data);
     }
 
     public function show(Article $article)
