@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Article;
 use App\Http\Requests\ArticleRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 //use Request;
 use Illuminate\Http\Request;
@@ -19,6 +20,8 @@ class ArticlesController extends Controller
     {
 //        $this->middleware('');
 //        parent::__construct();
+//        $this->middleware('auth', ['only' => ['create', 'edit']]);
+        $this->middleware('auth', ['except' => ['index', 'view']]);
     }
 
     public function index()
@@ -113,7 +116,8 @@ class ArticlesController extends Controller
         $data = $request->all(); // if use Request validation
 //        $data['published_at'] = Carbon::now();
 //var_dump($data);die();
-        $a = Article::create($data);
+        $article = Article::create($data);
+        Auth::user()->articles()->save($article);
 //        var_dump($a);die();
         return redirect()->route('article::list');
         // or
@@ -148,6 +152,14 @@ class ArticlesController extends Controller
     {
         Article::destroy($id);
         return redirect()->route('article::list');
+    }
+
+    public function _checkAuth()
+    {
+        if(Auth::guest()) {
+            return redirect()->route('article::list');
+            exit();
+        }
     }
 
 }

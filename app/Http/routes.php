@@ -22,9 +22,11 @@ Route::get('contact', 'IndexController@contact');
 
 Route::get('cv', 'CvController@index');
 
-Route::get('home', function () {
-    return view('welcome');
-});
+//Route::get('home', function () {
+//    return view('welcome');
+//});
+
+Route::get('/home', 'HomeController@index');
 
 Route::controllers(array(
     'auth'     => 'Auth\AuthController',
