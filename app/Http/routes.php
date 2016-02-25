@@ -20,7 +20,7 @@ Route::get('/hello/{name}', 'WelcomeController@hello');
 Route::get('index', 'IndexController@index');
 Route::get('contact', 'IndexController@contact');
 
-Route::get('cv', 'CvController@index');
+Route::get('cv', ['middleware' => 'auth', 'uses' => 'CvController@index']);
 
 //Route::get('home', function () {
 //    return view('welcome');
