@@ -5,7 +5,7 @@
 <h3 class="text-right"><a class="btn btn-success" href="{{ route('article::create') }}">新增</a></h3>
 @foreach($articles as $article)
     <h2>
-        <a href="{{ route('article::view', ['id' => $article->id]) }}">
+        <a href="{{ route('article::show', ['id' => $article->id]) }}">
             {{ $article->title }}
         </a>
     </h2>

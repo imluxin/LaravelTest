@@ -129,9 +129,9 @@ class ArticlesController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        $article = Article::findOrFail($id);
+//        $article = Article::findOrFail($id);
         return view('article.edit', ['article' => $article]);
     }
 
