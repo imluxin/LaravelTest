@@ -141,9 +141,9 @@ class ArticlesController extends Controller
      * @param ArticleRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, ArticleRequest $request)
+    public function update(Article $article, ArticleRequest $request)
     {
-        $article = Article::findOrFail($id);
+//        $article = Article::findOrFail($id);
         $article->update($request->all());
         return redirect()->route('article::list');
     }

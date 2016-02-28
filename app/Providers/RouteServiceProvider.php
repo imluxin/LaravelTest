@@ -24,13 +24,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
+        parent::boot($router);
         // 全局限定id为数字
         $router->pattern('id', '[0-9]+');
 
         // article 绑定 App\Article 模型
         $this->model('article', 'App\Model\Article');
-
-        parent::boot($router);
     }
 
     /**

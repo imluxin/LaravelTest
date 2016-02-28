@@ -45,7 +45,7 @@ Route::group(['as' => 'article::', 'prefix' => 'articles'], function () {
     Route::post('/store', ['as' => 'store', 'uses' => 'ArticlesController@store']);
     Route::get('/{article}', ['as' => 'show', 'uses' => 'ArticlesController@show']);
     Route::get('/{article}/edit', ['as' => 'edit', 'uses' => 'ArticlesController@edit']);
-    Route::patch('/{id}', ['as' => 'update', 'uses' => 'ArticlesController@update']);
+    Route::patch('/{article}', ['as' => 'update', 'uses' => 'ArticlesController@update']);
     Route::put('/{id}', ['as' => 'update_', 'uses' => 'ArticlesController@update']);
     Route::get('/view/{id}', ['as' => 'view', 'uses' => 'ArticlesController@view']);
     Route::get('/{id}/delete', ['as' => 'delete', 'uses' => 'ArticlesController@delete']);
