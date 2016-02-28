@@ -1,6 +1,9 @@
 @extends('layout.demo')
 
+
+
 @section('content')
+    @include('flash::message')
 <h1>Articles</h1>
 <h3 class="text-right"><a class="btn btn-success" href="{{ route('article::create') }}">新增</a></h3>
 @foreach($articles as $article)

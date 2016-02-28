@@ -136,7 +136,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+
+        // add by lux
         Illuminate\Html\HtmlServiceProvider::class, // html 库依赖，用于表单生成等
+        \Laracasts\Flash\FlashServiceProvider::class, // laracasts flash message provider
 
         /*
          * Application Service Providers...
@@ -195,7 +198,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
+
+        // add by lux
         'Html'      => Illuminate\Html\HtmlFacade::class, // add by lux  // html 库依赖，用于表单生成等
+        'Flash'     => \Laracasts\Flash\Flash::class // laracasts flash message
     ],
 
 ];

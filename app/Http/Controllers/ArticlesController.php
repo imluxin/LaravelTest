@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 //use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class ArticlesController extends Controller
 {
@@ -118,7 +119,12 @@ class ArticlesController extends Controller
 //var_dump($data);die();
         $article = Article::create($data);
         Auth::user()->articles()->save($article);
-//        var_dump($a);die();
+
+        // session flash
+//        Session::flash('flash_message', '创建成功');
+//        Session::flash('flash_message_important', true);
+        flash('文章创建成功');
+
         return redirect()->route('article::list');
         // or
 //        return redirect('articles');
