@@ -47,7 +47,6 @@ class ArticlesController extends Controller
             ->published()
             ->with('user')
             ->get();
-
         // 直接return articles为 json字符串
 //        return $articles;
 //var_dump($articles);
@@ -57,7 +56,7 @@ class ArticlesController extends Controller
 //            $b = $a->user->username;
 //            var_dump($b);die();
 //        }
-        return view('article.index', $data);//->with($data);
+        return view('article.index')->with($data);
     }
 
     public function show(Article $article)
@@ -123,9 +122,11 @@ class ArticlesController extends Controller
         // session flash
 //        Session::flash('flash_message', '创建成功');
 //        Session::flash('flash_message_important', true);
-        flash('文章创建成功');
+//        flash('文章创建成功');
 
-        return redirect()->route('article::list');
+        flash()->overlay('文章创建成功！');
+
+       return redirect()->route('article::list');
         // or
 //        return redirect('articles');
     }

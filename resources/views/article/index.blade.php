@@ -25,4 +25,10 @@
     </action>
     <hr>
 @endforeach
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#flash-overlay-modal').modal();
+        });
+        // $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+    </script>
 @stop
