@@ -21,13 +21,18 @@
     </article>
     <action>
         <a href="{{ route('article::edit', ['id' => $article->id]) }}" class="btn btn-primary">Edit</a>
-        <a href="{{ route('article::delete', ['id' => $article->id]) }}" class="btn btn-danger">Delete</a>
+        <a href="{{ route('article::delete', ['id' => $article->id]) }}" class="btn btn-danger js-delete">Delete</a>
     </action>
     <hr>
 @endforeach
     <script type="text/javascript">
         $(document).ready(function(){
             $('#flash-overlay-modal').modal();
+            $('.js-delete').click(function(){
+                if (!confirm('确定要删除吗？')){
+                    return false;
+                }
+            });
         });
         // $('div.alert').not('.alert-important').delay(3000).slideUp(300);
     </script>
