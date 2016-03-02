@@ -48,4 +48,13 @@ class Article extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * article 与 tag 多对多
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Model\Tag');
+    }
 }
