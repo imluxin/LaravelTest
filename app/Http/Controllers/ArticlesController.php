@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Article;
 use App\Http\Requests\ArticleRequest;
+use App\Model\Tag;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -47,11 +48,17 @@ class ArticlesController extends Controller
             ->published()
             ->with('user')
             ->get();
+
+        $tags = Tag::all(['id','name']);
+
         // 直接return articles为 json字符串
 //        return $articles;
 //var_dump($articles);
         $metaTitle = 'Articles';
-        $data = array('articles' => $articles, 'metaTitle' => $metaTitle); //compact('articles', 'metaTitle')
+        $data = array('articles' => $articles,
+                      'metaTitle' => $metaTitle,
+                        'tags' => $tags
+        ); //compact('articles', 'metaTitle')
 //        foreach($articles as $a) {
 //            $b = $a->user->username;
 //            var_dump($b);die();
@@ -71,6 +78,13 @@ class ArticlesController extends Controller
 //        var_dump($article->published_at);
         $metaTitle = $article->title;
         return view('article.show')->with(compact('article', 'metaTitle', 'user'));
+    }
+
+    public function ta($id)
+    {
+        $tag = Tag::findOrFail($id);
+        $articles = $tag->articles;
+        return view('article.tags')->with(['articles' => $articles, 'tag' => $tag]);
     }
 
     /**
@@ -119,6 +133,7 @@ class ArticlesController extends Controller
         $article = Article::create($data);
         Auth::user()->articles()->save($article);
 
+        $article->tags()->attch(1);
         // session flash
 //        Session::flash('flash_message', '创建成功');
 //        Session::flash('flash_message_important', true);
@@ -152,6 +167,7 @@ class ArticlesController extends Controller
     {
 //        $article = Article::findOrFail($id);
         $article->update($request->all());
+        $article->tags()->attach(5);
         return redirect()->route('article::list');
     }
 

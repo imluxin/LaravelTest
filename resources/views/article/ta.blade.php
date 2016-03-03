@@ -5,10 +5,7 @@
 @section('content')
     @include('flash::message')
 <h1>Articles</h1>
-    <div>
-        @foreach($tags as $t)
-            <a href="{{ route('tag_article', ['id' => $t->id]) }}">{{ $t->name }}</a>
-    </div>
+<h2>Tag: {{ $tag->name }}</h2>
 <h3 class="text-right"><a class="btn btn-success" href="{{ route('article::create') }}">新增</a></h3>
 @foreach($articles as $article)
     <h2>
