@@ -133,7 +133,7 @@ class ArticlesController extends Controller
         $article = Article::create($data);
         Auth::user()->articles()->save($article);
 
-        $article->tags()->attch(1);
+        $article->tags()->attach(1);
         // session flash
 //        Session::flash('flash_message', '创建成功');
 //        Session::flash('flash_message_important', true);
