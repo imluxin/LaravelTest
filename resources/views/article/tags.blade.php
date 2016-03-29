@@ -1,11 +1,9 @@
 @extends('layout.demo')
 
-
-
 @section('content')
     @include('flash::message')
 <h1>Articles</h1>
-<h2>Tag: {{ $tag->name }}</h2>
+<h2>Tag: <span style="color: red;font-weight: bold;">{{ $tag->name }}</span></h2>
 <h3 class="text-right"><a class="btn btn-success" href="{{ route('article::create') }}">新增</a></h3>
 @foreach($articles as $article)
     <h2>

@@ -51,7 +51,7 @@ Route::group(['as' => 'article::', 'prefix' => 'articles'], function () {
     Route::get('/{id}/delete', ['as' => 'delete', 'uses' => 'ArticlesController@delete']);
 });
 
-Route::get('/tag/{id}/articles', ['as' => 'tag_article', 'use' => 'ArticlesController@ta']);
+Route::get('/tag/{id}/articles', ['as' => 'tag_article', 'uses' => 'ArticlesController@tags']);
 
 //Route::get('articles', 'ArticlesController@index')->name('article_home');
 //Route::post('articles', 'ArticlesController@store');

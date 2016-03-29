@@ -80,7 +80,7 @@ class ArticlesController extends Controller
         return view('article.show')->with(compact('article', 'metaTitle', 'user'));
     }
 
-    public function ta($id)
+    public function tags($id)
     {
         $tag = Tag::findOrFail($id);
         $articles = $tag->articles;
@@ -133,7 +133,7 @@ class ArticlesController extends Controller
         $article = Article::create($data);
         Auth::user()->articles()->save($article);
 
-        $article->tags()->attch(1);
+        $article->tags()->attach(1);
         // session flash
 //        Session::flash('flash_message', '创建成功');
 //        Session::flash('flash_message_important', true);

@@ -9,8 +9,6 @@
     </div>
 @endif
 
-
-
 <script type="text/javascript">
 //    $('div.alert').not('.alert-important').delay(13000).remove();//.slideUp(300);
 </script>

@@ -1,13 +1,11 @@
 @extends('layout.demo')
-
-
-
 @section('content')
-    @include('flash::message')
+@include('flash::message')
 <h1>Articles</h1>
     <div>
         @foreach($tags as $t)
             <a href="{{ route('tag_article', ['id' => $t->id]) }}">{{ $t->name }}</a>
+        @endforeach
     </div>
 <h3 class="text-right"><a class="btn btn-success" href="{{ route('article::create') }}">新增</a></h3>
 @foreach($articles as $article)
@@ -39,6 +37,5 @@
                 }
             });
         });
-        // $('div.alert').not('.alert-important').delay(3000).slideUp(300);
     </script>
 @stop
