@@ -108,8 +108,9 @@ class ArticlesController extends Controller
 
     public function create()
     {
+        $tags = Tag::lists('name', 'id');
         $metaTitle = 'Create Article';
-        return view('article.create', compact('metaTitle'));
+        return view('article.create', compact('metaTitle', 'tags'));
     }
 
     /**
@@ -127,13 +128,14 @@ class ArticlesController extends Controller
 //                                   'body'  => 'required']);
 
 //        $data = Request::all(); // use nothing validation
+        $tags = $request->input('tag_list');
         $data = $request->all(); // if use Request validation
 //        $data['published_at'] = Carbon::now();
 //var_dump($data);die();
         $article = Article::create($data);
         Auth::user()->articles()->save($article);
 
-        $article->tags()->attach(1);
+        $article->tags()->attach($tags);
         // session flash
 //        Session::flash('flash_message', '创建成功');
 //        Session::flash('flash_message_important', true);
@@ -153,8 +155,9 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
+        $tags = Tag::lists('name', 'id');
 //        $article = Article::findOrFail($id);
-        return view('article.edit', ['article' => $article]);
+        return view('article.edit', ['article' => $article, 'tags' => $tags]);
     }
 
     /**
@@ -167,7 +170,7 @@ class ArticlesController extends Controller
     {
 //        $article = Article::findOrFail($id);
         $article->update($request->all());
-        $article->tags()->attach(5);
+        $article->tags()->attach($request->input('tag_list'));
         return redirect()->route('article::list');
     }
 

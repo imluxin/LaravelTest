@@ -1,7 +1,5 @@
 @extends('layout.demo')
 
-
-
 @section('content')
     @include('flash::message')
 <h1>Articles</h1>

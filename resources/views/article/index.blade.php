@@ -17,7 +17,9 @@
     <h4>
         Author: {{ $article->user->username }} <br>
         Time: {{ $article->published_at }} <br>
+        @unless($article->tags->isEmpty())
         Tags: {{ implode(',', $article->tags->lists('name')->toArray()) }}
+        @endunless
     </h4>
     <article>
         {{ $article->body }}
